@@ -1,0 +1,38 @@
+----------------------------------------------------------
+S-6B REGIME CHARACTERIZATION REPORT
+----------------------------------------------------------
+Run completed: 2026-03-03 (exit code 0)
+
+Small Signal Stability:
+Perturbation 0%  | SI=0.820 | Var=0.0001 | Lat=5.00 | Recovery=>5000 | Status=STRESS
+Perturbation 2%  | SI=0.820 | Var=0.0000 | Lat=4.68 | Recovery=>5000 | Status=STRESS
+Perturbation 5%  | SI=0.820 | Var=0.0000 | Lat=5.00 | Recovery=>5000 | Status=STRESS
+Perturbation 10%  | SI=0.822 | Var=0.0001 | Lat=4.30 | Recovery=>5000 | Status=STRESS
+Perturbation 15%  | SI=0.826 | Var=0.0000 | Lat=5.00 | Recovery=>5000 | Status=STRESS
+Perturbation 20%  | SI=0.820 | Var=0.0000 | Lat=5.00 | Recovery=>5000 | Status=STRESS
+
+Avvio Phase B (Damping Estimation)...
+Phase B: damping estimation (10% perturbation)
+  duration 1000 SI=0.846
+  duration 2000 SI=0.820
+  duration 3000 SI=0.820
+
+DampingCoefficient = -0.0001
+SystemClassification = MARGINAL
+
+SensitivityIndexProfile:
+0-2%  = 0.0000
+2-5%  = 0.0000
+5-10%  = -0.0448
+10-15%  = -0.1112
+15-20%  = 0.0000
+SensitivityBehavior = SUBLINEAR
+
+LyapunovProxyMean = 0.4546
+LyapunovInterpretation = DIVERGENT
+
+StabilityMarginEstimate = >20% (perturbation before runaway)
+IntrinsicInstabilityDetected = NO
+RunawayRequiresExternalFeedback = YES
+
+----------------------------------------------------------

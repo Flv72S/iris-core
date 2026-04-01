@@ -1,0 +1,93 @@
+{
+  "preCrash": {
+    "nodeId": "node-52570",
+    "stateHash": "ae34df500b72612da9b7cecc70fbababe71190fff05e95548dc04aabb4095353",
+    "executionJournalSize": 3,
+    "executionJournalIds": [
+      "CMP:5df6bfe6b446b97c72fab4bb9f75448f2c373bed27095fa9b682cef8159dd03c",
+      "CMP:93f66a8644376babe6cd6874a947d8dc69146ddb7fb58a9d53dabb7fbd1579dd",
+      "CMP:a8be803da453483e75f0604fcf2294fdd7a94cd76f6d24c93078a26509ea5620"
+    ],
+    "executedActions": [
+      "HALT_CLUSTER",
+      "FREEZE_TRANSITIONS",
+      "ESCALATE"
+    ],
+    "lastDecisionId": "CMP:a8be803da453483e75f0604fcf2294fdd7a94cd76f6d24c93078a26509ea5620",
+    "timestamp": 3
+  },
+  "postRecovery": {
+    "nodeId": "node-52570",
+    "stateHash": "db9c201aaf6a38f8404906415f3c180b6ce36996b0eb29f189a2dfc2d689cdd2",
+    "executionJournalSize": 25,
+    "executionJournalIds": [
+      "CMP:5df6bfe6b446b97c72fab4bb9f75448f2c373bed27095fa9b682cef8159dd03c",
+      "CMP:93f66a8644376babe6cd6874a947d8dc69146ddb7fb58a9d53dabb7fbd1579dd",
+      "CMP:a8be803da453483e75f0604fcf2294fdd7a94cd76f6d24c93078a26509ea5620",
+      "CMP:83c45ba54fe89eed8b3529d0a1b9a719b6c5d7db2a83f78efa75fc44d97d2c49",
+      "CMP:e099dcae4be0df2557c182288abada977fa8d5d556b81a058eb53a84b954b344",
+      "CMP:51659eb558eec354174aa23232101ffb5a2266c4dc05f6822ff1c2bcf9ca3bd6",
+      "CMP:9c1694feb7ad0c9cdf64e02652116f18b80444ccdb54cb0ae49c3fcc49ec73dd",
+      "CMP:e6e953548a459dc20738f7b5e7904b493bb116f5cedefe6d1f63dcf15f4f13c3",
+      "CMP:68cd51f43a379d57d9f095194f97425541ee0b0a05f7cb6ce7227382903c5716",
+      "CMP:e5748df6d1b3eeb66f12b2446efce34547530a82dac0df23efb910c2947db004",
+      "CMP:7b900db8b8f715c3111765db705680e38b34adf1728b0defab412a1fe30acb7e",
+      "CMP:c1ce4c88bd4c4f54fc1873db6cf757e2b1db577c54689ea47599f5597341387a",
+      "CMP:b238d9b854d602243194092517250c4708a934db985e4785ef49e392ec920890",
+      "CMP:d82d1bddda0008f8cd3f407d0a26e94f7e896c99cd043ae3ee0f5b5252fb9f16",
+      "CMP:3fe0663105e24f14952a4a3f34771746168ae9b0f3146d7b60553fd0a39ae769",
+      "CMP:242d798249adcb286f3219e9a36eebc84c058e0bef9e0ff194f8832c6f718810",
+      "CMP:a17844792c709eae5f562f036bae437608c8a877ff6e6bf0649448856f73658e",
+      "CMP:b6150ab377256ef8afe15383df2bb689f88e139c41b6ddaaee598f5103392b2b",
+      "CMP:a18c21e225da696d7b306cd77d0bfef649dcce9dd2b88f600edd2ba38dd6740f",
+      "CMP:b3650ddf9de7c9ae5cf88e3e6642c8f837256bf7831a354374771b316ee65545",
+      "CMP:b83ec92d4152770abde90851318d4a724578d38aa3e8eb7509198439df755002",
+      "CMP:60a5582ca2e309c632b1004176bc9b1d56e940d3492b9ce68b944c035e005607",
+      "CMP:0e80670a44ae1825bddcebeeaa8aa89d7e02df1c688de8f65530eb13f5d2ad0d",
+      "CMP:4e6958eb6d1749af3849705db40298002184ce2c87e3754b95b05a928f1b3cd2",
+      "CMP:e95def13ec71a88b7d88f46adc8ee8b6d21f1b192d53a1f2bf64239f551d4ab4"
+    ],
+    "executedActions": [
+      "HALT_CLUSTER",
+      "FREEZE_TRANSITIONS",
+      "ESCALATE"
+    ],
+    "lastDecisionId": "CMP:e95def13ec71a88b7d88f46adc8ee8b6d21f1b192d53a1f2bf64239f551d4ab4",
+    "timestamp": 25
+  },
+  "convergence": {
+    "hash": false,
+    "journal": true,
+    "actions": false,
+    "decision": false
+  },
+  "replay": {
+    "lostDecisions": 0,
+    "duplicatedDecisions": 0
+  },
+  "persistence": {
+    "valid": true
+  },
+  "persistenceModel": {
+    "journalAsSourceOfTruth": true,
+    "snapshotConsistent": true,
+    "replayCorrect": true
+  },
+  "validationModel": {
+    "type": "distributed",
+    "baselineConverged": true,
+    "postRecoveryCorrect": true,
+    "persistenceCorrect": true,
+    "finalConvergence": true
+  },
+  "recoveryTimeMs": 94003,
+  "finalResult": "PASS",
+  "errors": [],
+  "diagnostics": {
+    "finalJournalSizes": {
+      "node-52570": 25,
+      "node-52580": 25,
+      "node-52586": 25
+    }
+  }
+}

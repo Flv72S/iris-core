@@ -1,0 +1,4 @@
+Hash values identical to VERIFY_HASHES.txt.
+Snapshot hashes coherent with evidence index.
+Evidence chain hashes consistent.
+No byte-level divergence from reference.

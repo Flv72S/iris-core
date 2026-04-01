@@ -1,0 +1,42 @@
+/**
+ * IRIS Demo — Layout a 3 colonne (desktop), impilato (mobile).
+ */
+
+.demo-root {
+  min-height: 100vh;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.demo-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-control-bar {
+  margin-bottom: 1.5rem;
+}
+
+.demo-columns {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .demo-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.demo-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-column .demo-card {
+  flex: 1;
+  min-height: 0;
+}

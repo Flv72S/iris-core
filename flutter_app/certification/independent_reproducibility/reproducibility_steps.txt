@@ -1,0 +1,9 @@
+1. Acquire Public Verification Package.
+2. Sort filenames alphabetically.
+3. For each file: append filename (LF) then content (LF).
+4. Compute SHA-256 of concatenation (UTF-8).
+5. Compare result to PACKAGE_SHA256.
+6. Compare structural hash to STRUCTURAL_HASH.
+7. Compare scope hash to SCOPE_HASH.
+8. Compare evidence index hash to EVIDENCE_INDEX_HASH.
+9. Compare audit chain root to AUDIT_CHAIN_ROOT.

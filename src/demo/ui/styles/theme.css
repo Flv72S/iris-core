@@ -1,0 +1,198 @@
+/**
+ * IRIS Demo — Palette e tipografia. Sobrio, product-grade.
+ * Nessun gradiente, nessuna ombra pesante.
+ */
+
+:root {
+  --demo-bg: #F8F9FB;
+  --demo-card-bg: #FFFFFF;
+  --demo-text-primary: #1F2937;
+  --demo-text-secondary: #6B7280;
+  --demo-border: #E5E7EB;
+  --demo-accent: #2563EB;
+  --demo-warning: #D97706;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--demo-bg);
+  color: var(--demo-text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Gerarchia */
+.demo-h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--demo-text-primary);
+}
+
+.demo-h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--demo-text-primary);
+  letter-spacing: 0.01em;
+}
+
+.demo-h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--demo-text-primary);
+}
+
+.demo-body {
+  margin: 0;
+  color: var(--demo-text-primary);
+  line-height: 1.5;
+}
+
+.demo-small {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--demo-text-secondary);
+}
+
+/* Card */
+.demo-card {
+  background: var(--demo-card-bg);
+  border: 1px solid var(--demo-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  box-sizing: border-box;
+}
+
+/* Badge — Experience (large/primary), State (neutral + severity), Feature (small) */
+.demo-badge {
+  display: inline-block;
+  font-weight: 500;
+  border-radius: 4px;
+}
+.demo-badge--small {
+  padding: 0.15em 0.4em;
+  font-size: 0.7rem;
+}
+.demo-badge--medium {
+  padding: 0.2em 0.5em;
+  font-size: 0.75rem;
+}
+.demo-badge--large {
+  padding: 0.35em 0.65em;
+  font-size: 0.875rem;
+}
+.demo-badge--neutral {
+  background: var(--demo-border);
+  color: var(--demo-text-primary);
+}
+.demo-badge--accent {
+  background: var(--demo-accent);
+  color: #fff;
+}
+.demo-badge--warning {
+  background: var(--demo-warning);
+  color: #fff;
+}
+
+/* Divider */
+.demo-divider {
+  border: none;
+  border-top: 1px solid var(--demo-border);
+  margin: 0.75rem 0;
+}
+
+.demo-header {
+  margin-bottom: 1.5rem;
+}
+
+.demo-header-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--demo-text-secondary);
+  font-weight: 400;
+}
+
+/* UxStatePanel — state list */
+.demo-state-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.demo-state-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--demo-border);
+  font-size: 13px;
+}
+.demo-state-item:last-child {
+  border-bottom: none;
+}
+.demo-state-severity {
+  margin-left: 6px;
+  color: var(--demo-text-secondary);
+}
+.demo-state-title {
+  margin-top: 4px;
+}
+
+/* ExperiencePanel — central card, explanation block */
+.demo-experience-card {
+  border-color: var(--demo-accent);
+  border-width: 1px;
+}
+.demo-experience-badge-wrap {
+  margin-bottom: 0.75rem;
+}
+.demo-overloaded-support {
+  margin-bottom: 0.75rem;
+  font-style: normal;
+}
+.demo-explanation-prefix {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  color: var(--demo-text-secondary);
+  font-weight: 500;
+}
+.demo-explanation-block {
+  padding: 1rem;
+  background: var(--demo-bg);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  max-width: 36em;
+  line-height: 1.5;
+  color: var(--demo-text-primary);
+}
+
+/* FeaturePanel — H3, small badge, de-emphasized when OVERLOADED */
+.demo-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.demo-feature-item {
+  margin-bottom: 1rem;
+}
+.demo-feature-item:first-child {
+  margin-top: 0;
+}
+.demo-feature-badge-wrap {
+  margin-left: 6px;
+}
+.demo-feature-meta {
+  margin-top: 4px;
+}
+.demo-feature-explanation {
+  margin-top: 2px;
+  color: var(--demo-text-secondary);
+}
+.demo-features-deemphasized .demo-h3 {
+  font-weight: 500;
+  color: var(--demo-text-secondary);
+}
+.demo-features-deemphasized .demo-feature-explanation {
+  color: var(--demo-text-secondary);
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package iris.transport;
+
+message TransportMessage {
+  string sender = 1;
+  string recipient = 2;
+  string type = 3;
+  string payload = 4; // JSON serialized
+  int64 timestamp = 5;
+}
+
+service IrisTransportService {
+  rpc SendMessage(TransportMessage) returns (Ack);
+}
+
+message Ack {
+  bool success = 1;
+}

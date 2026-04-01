@@ -1,0 +1,52 @@
+{
+  "name": "iris",
+  "version": "0.1.0",
+  "description": "IRIS-Sim S-0 / S-1 / S-2 — Deterministic Runtime, Simulation, Chaos",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "iris": "./dist/cli/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/copy-grpc-proto.mjs && node scripts/copy-templates.mjs",
+    "start": "node dist/index.js",
+    "start:s1": "node dist/simulation/index.js",
+    "start:s2": "node dist/chaos/index.js",
+    "start:s2:scalability": "node dist/chaos/validation/index.js",
+    "test": "node --import ./dist/test/setup/bootstrap.js --test dist/**/*.test.js",
+    "test:certify": "node dist/test/certification_runner.js",
+    "validate:s0": "node dist/validation/ValidationRunner.js",
+    "start:s3": "node dist/verification/index.js",
+    "start:s3:stress": "node dist/verification/stress/index.js",
+    "start:s4": "node dist/risk/index.js",
+    "start:s5": "node dist/exploration/index.js",
+    "start:s5b": "node dist/frontier/index.js",
+    "start:s5c": "node dist/exploration/S5CriticalExpansion.js",
+    "start:s5d": "node dist/exploration/S5DirectedCriticalSearch.js",
+    "start:s5e": "node dist/exploration/S5CriticalDistanceAudit.js",
+    "start:s5f": "node dist/exploration/S5ProtectionSensitivity.js",
+    "start:s6a": "node dist/exploration/S6SupercriticalExploration.js",
+    "start:s6a-probe": "node dist/validation/S6APhaseBoundaryProbe.js",
+    "start:s6a2-probe": "node dist/validation/S6A2PhaseBoundaryProbe.js",
+    "start:s6b-probe": "node dist/validation/S6BRegimeCharacterization.js",
+    "start:s6-test": "node dist/tests/S6MinimalValidation.js",
+    "verify:phase7": "node dist/governance/verification/runPhase7Report.js",
+    "start:governance-api": "node dist/governance/governance_api/run_server.js",
+    "test:governance-api": "node dist/governance/governance_api/integration_tests/governance_api_verification.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
+    "ws": "^8.19.0"
+  }
+}

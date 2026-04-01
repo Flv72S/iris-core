@@ -1,0 +1,34 @@
+# H9 - Meta-Governance CI. Blocks on violations; no network; no secrets.
+
+name: Meta-Governance CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  meta-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        working-directory: flutter_app
+        run: dart pub get
+
+      - name: Get changed files
+        run: |
+          git fetch origin main --depth=1 2>/dev/null || true
+          git diff --name-only origin/main HEAD > flutter_app/changed.txt 2>/dev/null || git diff --name-only HEAD~1 HEAD > flutter_app/changed.txt 2>/dev/null || true
+          test -s flutter_app/changed.txt || true
+
+      - name: Run Meta-Governance CI
+        working-directory: flutter_app
+        run: dart run tooling/meta_governance_ci/meta_governance_ci_runner.dart --changed-files=changed.txt

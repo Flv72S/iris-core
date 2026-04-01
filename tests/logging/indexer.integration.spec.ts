@@ -1,0 +1,2 @@
+import './indexer.integration.test';
+

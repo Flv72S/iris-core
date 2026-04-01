@@ -1,0 +1,40 @@
+# IRIS - Preview Docker Compose
+# Configurazione per ambiente preview
+
+version: '3.8'
+
+services:
+  iris-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.preview
+    container_name: iris-preview
+    ports:
+      - "${HTTP_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=preview
+      - HTTP_PORT=3000
+      - PERSISTENCE=${PERSISTENCE:-sqlite}
+      - SQLITE_FILE_PATH=/data/iris.db
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - SHUTDOWN_TIMEOUT_MS=${SHUTDOWN_TIMEOUT_MS:-10000}
+    volumes:
+      # Volume persistente per SQLite
+      - iris-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (r) => { process.exit(r.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - iris-preview
+
+volumes:
+  iris-data:
+    driver: local
+
+networks:
+  iris-preview:
+    driver: bridge

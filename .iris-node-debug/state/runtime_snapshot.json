@@ -1,0 +1,1 @@
+{"payload":{"clusterState":{"executedActions":[],"executionJournal":{},"executionMetadata":{"anyApplied":false,"appliedCount":0},"executionTimestamp":-1,"expectedNodeIds":[],"globalPhase":"INITIALIZING","logicalTime":{"counter":0,"nodeId":"node-4103"},"nodes":{},"transitionLocks":{},"violations":[]},"executionJournal":{}},"version":1}

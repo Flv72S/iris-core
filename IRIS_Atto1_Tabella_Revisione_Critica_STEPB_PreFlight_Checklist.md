@@ -1,0 +1,38 @@
+# IRIS — Atto 1: Tabella Revisione Critica STEP B + Pre-Flight Checklist
+| # | Vincolo / Principio | Sezione di Riferimento | Stato | Tipo di Rischio / Ambiguita | Impatto Potenziale | Suggerimento di Rafforzamento Normativo |
+|---|-------------------|----------------------|-------|-----------------------------|-----------------|----------------------------------------|
+| 1 | No dark pattern (streak, countdown, FOMO, gating emotivo) | STEP B 1.1 / Pre-Flight 1.1 | ✅ | Basso: elenco gia specifico | Riduzione pressione indebita sugli utenti | Mantenere elenco di esempi vietati e aggiornarlo solo con atto normativo |
+| 2 | No spam economy (reward inviti, broadcast massivo) | STEP B 1.2 / Pre-Flight 1.3 | ✅ | Basso: divieto esplicito | Evita incentivi a volume e spam | Ribadire divieto di metriche di valore basate su volume |
+| 3 | No gamification tossica (ranking, progressione competitiva) | STEP B 1.3 / Pre-Flight 1.2 | ✅ | Basso: divieti espliciti | Evita competizione tossica e status sociale | Confermare che ogni ranking/score sociale e vietato |
+| 4 | Diritto all'oblio (cancellazione effettiva) | STEP B 1.4 / Pre-Flight 1.4 | ❌ | Ambiguita di scope e definizione di "cancellazione" | Retention mascherata o non conformita | Definire quali dati e metadati devono essere cancellabili e quali retention sono vietate |
+| 5 | Proprieta del dato e portabilita | STEP B 1.5 / Pre-Flight 1.5 | ⚠️ | Ambiguita di perimetro semantico | Export parziale senza ricostruzione del contesto | Imporre portabilita completa di stati, ruoli e contesti senza perdita semantica |
+| 6 | Trasparenza AI (tracciabilita interventi) | STEP B 1.6 / Pre-Flight 5.3 | ✅ | Basso: obbligo dichiarato | Riduce opacita e manipolazione | Rendere obbligatoria identificazione esplicita di ogni output AI |
+| 7 | Comunicazione non piatta come modalita primaria | STEP B 2 / Pre-Flight 2.1 | ⚠️ | Ambiguita di definizione | Chat tradizionale mascherata come "non piatta" | Definire elementi minimi strutturali che qualificano la comunicazione |
+| 8 | Comunicazione legata a contesto con stato esplicito | STEP B 2 / Pre-Flight 2.2-2.3 | ⚠️ | Ambiguita di criterio | Contesto ridotto a tag decorativo | Richiedere che ogni messaggio valido abbia contesto con stato verificabile |
+| 9 | Distinzione evento comunicativo / stato relazione | STEP B 2 | ⚠️ | Ambiguita di scope | Confusione tra messaggi e stato relazionale | Definire esplicitamente oggetti e responsabilita di ciascun livello |
+| 10 | Persistenza del contesto non opzionale | STEP B 2 | ⚠️ | Ambiguita di misurabilita | Persistenza parziale o bypass | Stabilire requisito minimo di persistenza per ogni contesto attivo |
+| 11 | Chat infinita non asse portante / non default | STEP B 2 / Pre-Flight 2.4 | ⚠️ | Ambiguita di "asse portante" | Default su chat lineare con contesto nominale | Definire criterio di "modalita primaria" e vietare chat lineare come default |
+| 12 | Identita fluida ma non anonima | STEP B 3.1 / Pre-Flight 3.3 | ⚠️ | Ambiguita su "anonimato forte" | Anonimato de facto con alias non tracciabili | Definire livello minimo di responsabilita e tracciabilita |
+| 13 | Root identity non eliminabile | STEP B 3.2 / Pre-Flight 3.1 | ❌ | Conflitto con diritto all'oblio | Retention indebita o violazione oblio | Separare continuita relazionale e dati personali cancellabili |
+| 14 | Alias come projection della root identity | STEP B 3.3 / Pre-Flight 3.2 | ⚠️ | Ambiguita su "projection" | Alias trattati come identita autonome | Imporre legame minimo e verificabile tra alias e root identity |
+| 15 | Governance soft ma difendibile | STEP B 3.4 | ⚠️ | Ambiguita di confini | Enforcement arbitrario o neutralita totale | Stabilire che solo regole esplicite e verificabili sono applicabili |
+| 16 | Anti-sybil compatibile con UX dichiarata | STEP B 3.5 / Pre-Flight 3.4 | ⚠️ | Ambiguita di "UX dichiarata" | Barriere eccessive mascherate | Definire limite massimo di frizione consentita |
+| 17 | AI opt-in e default disattivo | STEP B 4 / Pre-Flight 5.1 | ⚠️ | Ambiguita su opt-in di contesto | Attivazioni implicite | Richiedere consenso esplicito e revocabile per utente e contesto |
+| 18 | AI non sostitutiva | STEP B 4 | ⚠️ | Ambiguita su "sostitutiva" | AI che prende decisioni indirette | Vietare decisioni o enforcement automatici derivati da AI |
+| 19 | Social Coach opzionale e separato | STEP B 4 / Pre-Flight 5.4 | ⚠️ | Ambiguita di separazione dal core | Accoppiamento al core relazionale | Stabilire che il core deve funzionare senza coach |
+| 20 | Perimetro osservazione AI limitato al contesto | STEP B 4 / Pre-Flight 5.2 | ⚠️ | Ambiguita su "dati necessari" | Raccolta estesa non giustificata | Definire lista minima di categorie di dati osservabili |
+| 21 | Divieto aggregazione cross-contesto senza consenso | STEP B 4 | ⚠️ | Ambiguita sul consenso | Aggregazioni implicite | Richiedere consenso esplicito per ogni aggregazione cross-contesto |
+| 22 | AI non usa dati biometrici o esterni non autorizzati | STEP B 4 | ✅ | Basso: divieto puntuale | Riduce invasivita e rischi privacy | Mantenere elenco di dati vietati come norma |
+| 23 | AI non modifica ruoli / non impone regole | STEP B 4 | ✅ | Basso: divieto puntuale | Evita autorita AI | Ribadire divieto di azioni operative AI |
+| 24 | AI sempre visibile (osservazioni + suggerimenti) | STEP B 4 / Pre-Flight 5.3 | ⚠️ | Ambiguita su "visibile" | Opacita di input/output | Definire che ogni output AI deve indicare dati osservati e risultato |
+| 25 | Memoria per-community, non globale | STEP B 5 / Pre-Flight 4.2 | ⚠️ | Ambiguita di confini | Memoria globalizzata de facto | Vietare aggregazioni tra community a fini di memoria |
+| 26 | Memoria consultiva, non prescrittiva | STEP B 5 / Pre-Flight 4.3 | ⚠️ | Ambiguita su "consultiva" | Uso come gating o punteggio | Vietare che la memoria abiliti o blocchi azioni |
+| 27 | Reputazione non trasferibile tra community | STEP B 5 | ⚠️ | Ambiguita di "composita" | Reputazione implicita cross-community | Stabilire divieto di aggregazione o trasferimento di segnali |
+| 28 | Divieto ranking globali / score nascosti / potere automatico | STEP B 5 / Pre-Flight 4.4 | ✅ | Basso: divieto esplicito | Evita potere sociale automatico | Confermare divieti senza eccezioni |
+| 29 | Esclusione token, wallet, marketplace, governance on-chain avanzata | STEP B 6 / Pre-Flight 6.1-6.3 | ✅ | Basso: esclusioni nette | Evita deriva verso incentivi economici | Confermare esclusione totale nel dominio e nelle API |
+| 30 | Divieto ads e profilazione pubblicitaria | STEP B 6 / Pre-Flight 6.4 | ✅ | Basso: divieto esplicito | Evita monetizzazione basata su dati | Mantenere divieto senza eccezioni |
+| 31 | Divieto hook anticipatori non giustificati | STEP B 6 / Pre-Flight 6.2 | ⚠️ | Ambiguita su "giustificato" | Introduzione di campi futuri | Vietare campi o API non usati dall'MVP |
+| 32 | Core non modificato semanticamente | STEP B 7 / Pre-Flight 7.1 | ❌ | Ambiguita su "semantica" | Modifiche al core mascherate | Definire quali stati, ruoli e transizioni non sono modificabili |
+| 33 | Estensioni permesse e limitate | STEP B 7 / Pre-Flight 7.2 | ⚠️ | Ambiguita su perimetro estensioni | Estensioni che alterano il core | Elencare classi di estensioni consentite e vietate |
+| 34 | Astrazioni condivise limitate a consentite | STEP B 7 / Pre-Flight 7.3 | ⚠️ | Ambiguita su cosa e consentito | Condivisione eccessiva | Definire set chiuso di astrazioni condivisibili |
+| 35 | Nessun accoppiamento improprio al core | STEP B 7 / Pre-Flight 7.4 | ⚠️ | Ambiguita su "improprio" | Dipendenze forzate al core | Definire condizioni che costituiscono accoppiamento vietato |

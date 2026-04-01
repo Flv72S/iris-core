@@ -1,0 +1,4 @@
+STEP 1 — Extract package
+STEP 2 — Compute SHA-256
+STEP 3 — Compare expected hashes
+STEP 4 — Confirm deterministic match

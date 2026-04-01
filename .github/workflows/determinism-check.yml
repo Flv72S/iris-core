@@ -1,0 +1,54 @@
+name: IRIS Determinism Check
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  determinism:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies (safe mode)
+        run: npm install --ignore-scripts
+
+      - name: Run determinism hardening tests
+        run: npm run test:determinism:hardening 2>&1 | tee determinism-output.txt
+
+      - name: Extract canonical hash
+        id: extract_hash
+        run: |
+          # Vitest may prefix console lines; match marker anywhere on the line.
+          HASH=$(grep -oE 'IRIS_CANONICAL_STABILITY_SHA256=[a-f0-9]{64}' determinism-output.txt | head -n 1 | cut -d= -f2)
+          if [ -z "$HASH" ] || [ "${#HASH}" -ne 64 ]; then
+            echo "❌ Missing or invalid canonical hash in test output"
+            echo "--- tail of test output ---"
+            tail -n 80 determinism-output.txt
+            exit 1
+          fi
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "Extracted hash: $HASH"
+
+      - name: Validate hash
+        run: |
+          EXPECTED="2828e4a709a9c230370ec275b15eda3c1f7379118b6fffb2208ab9cbcc717246"
+          ACTUAL="${{ steps.extract_hash.outputs.hash }}"
+
+          echo "Expected: $EXPECTED"
+          echo "Actual:   $ACTUAL"
+
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "❌ Determinism FAILED"
+            exit 1
+          fi
+
+          echo "✅ Determinism VERIFIED"

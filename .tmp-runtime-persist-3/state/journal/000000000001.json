@@ -1,0 +1,1 @@
+{"decision":{"action":"ESCALATE","invariantIds":["inv-dup"],"reasons":["dup"],"severity":"CRITICAL","timestamp":1,"violationCount":1},"decisionId":"CMP:e6fe56b3e6a0cc1d3a23b189d90774579de8526cff14e79f6ab8c3a84ae430f1","executionTimestamp":1}

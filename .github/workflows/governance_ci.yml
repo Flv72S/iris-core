@@ -1,0 +1,30 @@
+# G7 - Governance CI Gates. No network; no external deps.
+
+name: Governance CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        working-directory: flutter_app
+        run: dart pub get
+
+      - name: Run Governance CI
+        working-directory: flutter_app
+        run: dart run tooling/governance_ci/governance_ci_runner.dart
+        env:
+          GIT_TERMINAL_PROMPT: 0

@@ -1,0 +1,1 @@
+{"decision":{"action":"ESCALATE","invariantIds":["inv-a"],"reasons":["a"],"severity":"CRITICAL","timestamp":1,"violationCount":1},"decisionId":"CMP:0a8664fcded646e18f77695b2fe5c61a92b87f8a67768a840f8e0058528f1c4c","executionTimestamp":1}

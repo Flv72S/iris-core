@@ -1,0 +1,9 @@
+# Phase 11.1.4 certification lint rules
+forbidden:
+  - pattern: DateTime.now()
+    path: lib/presentation
+  - pattern: Random()
+    path: lib
+required:
+  - note: Screens in IrisRouter
+  - note: Use design tokens

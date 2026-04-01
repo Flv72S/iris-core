@@ -1,0 +1,2 @@
+# Golden images: explainability_step_0.png, explainability_step_mid.png, explainability_step_final.png
+# Generate with: flutter test test/ui_explainability/explainability_golden_test.dart --update-goldens

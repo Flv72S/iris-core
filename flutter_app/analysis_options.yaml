@@ -1,0 +1,29 @@
+# Phase 11.1.1 — Strict static analysis. Certification: 0 errors, 0 critical warnings.
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: error
+    missing_required_param: error
+    missing_return: error
+
+linter:
+  rules:
+    - avoid_empty_else
+    - avoid_returning_null_for_future
+    - cancel_subscriptions
+    - close_sinks
+    - literal_only_boolean_expressions
+    - no_duplicate_case_values
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_final_fields
+    - prefer_final_locals
+    - unawaited_futures
+    - unnecessary_brace_in_string_interps
+    - unnecessary_null_checks
+    - use_key_in_widget_constructors

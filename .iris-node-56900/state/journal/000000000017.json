@@ -1,0 +1,1 @@
+{"decision":{"action":"HALT_CLUSTER","invariantIds":["ri-0"],"reasons":["recovery-12"],"severity":"CRITICAL","timestamp":112,"violationCount":1},"decisionId":"CMP:b6150ab377256ef8afe15383df2bb689f88e139c41b6ddaaee598f5103392b2b","executionTimestamp":17}

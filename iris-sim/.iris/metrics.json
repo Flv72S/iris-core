@@ -1,0 +1,17 @@
+{
+  "metrics": {
+    "active_sessions": 0,
+    "messages_received": 0,
+    "messages_sent": 0,
+    "node_uptime_seconds": 0,
+    "runtime.active_components": 0,
+    "runtime.boot.time": 73,
+    "runtime.component.count": 0,
+    "runtime.errors": 1,
+    "runtime.init.phase.duration": 3,
+    "runtime.init.phase.failures": 1,
+    "runtime.state": 0
+  },
+  "nodeId": "e07ca09b-1442-4047-b2b8-0321cd0439f0",
+  "timestamp": "2026-03-27T07:50:22.356Z"
+}

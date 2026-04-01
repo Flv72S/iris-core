@@ -1,0 +1,5 @@
+Sort files by name.
+Concatenate: for each file in order, output filename, newline, file content, newline.
+Compute SHA-256 of concatenation (UTF-8 bytes).
+Compare computed hash to value in PACKAGE_SHA256.
+Compare each artifact hash to corresponding value in expected_hashes.txt.

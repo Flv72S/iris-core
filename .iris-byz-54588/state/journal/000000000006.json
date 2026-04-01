@@ -1,0 +1,1 @@
+{"decision":{"action":"FREEZE_TRANSITIONS","invariantIds":["inv-73"],"reasons":["byz-reason-73"],"severity":"CRITICAL","timestamp":10073,"violationCount":1},"decisionId":"CMP:aff3ff7c7d42d8ceb5a11e21fbf92fc50d97ca0cfa9d879dfa3d10aab1d52f1d","executionTimestamp":6}

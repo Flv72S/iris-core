@@ -1,0 +1,81 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "react-hooks/exhaustive-deps": "error",
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "setTimeout",
+        "message": "UI non può gestire timer. Usa callback o props."
+      },
+      {
+        "name": "setInterval",
+        "message": "UI non può gestire timer. Usa callback o props."
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "axios",
+            "message": "UI non può effettuare fetch. Usa props o hooks."
+          },
+          {
+            "name": "node-fetch",
+            "message": "UI non può effettuare fetch. Usa props o hooks."
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["**/axios", "**/node-fetch"],
+            "message": "UI non può effettuare fetch. Usa props o hooks."
+          },
+          {
+            "group": ["@/core/**"],
+            "message": "UI non può importare da /core (eccetto /types)."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "MemberExpression[object.name='Date'][property.name='now']",
+        "message": "UI non può accedere a Date.now() diretto. Usa timestampBucketizer."
+      }
+    ],
+    "react/no-unused-state": "error",
+    "react/no-direct-mutation-state": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/explicit-function-return-type": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["src/ui/**/*.ts", "src/ui/**/*.tsx"],
+      "rules": {
+        "no-console": "error",
+        "no-debugger": "error"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

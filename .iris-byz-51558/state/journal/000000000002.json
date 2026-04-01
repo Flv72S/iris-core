@@ -1,0 +1,1 @@
+{"decision":{"action":"LOG_ONLY","invariantIds":["inv-32"],"reasons":["byz-reason-32"],"severity":"CRITICAL","timestamp":10032,"violationCount":1},"decisionId":"CMP:77b750eee49508d12e68a92537f683354d96894df71a312e6096d0ff1288514d","executionTimestamp":2}

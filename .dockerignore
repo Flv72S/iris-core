@@ -1,0 +1,23 @@
+# Docker ignore file
+# Esclude file non necessari nel build context
+
+node_modules
+npm-debug.log
+.env
+.env.*
+!.env.example
+!.env.preview.example
+.git
+.gitignore
+*.md
+!README.md
+.vscode
+.idea
+coverage
+dist
+build
+*.test.ts
+*.test.tsx
+vitest.config.ts
+tsconfig.json
+# Mantieni solo sorgenti necessari

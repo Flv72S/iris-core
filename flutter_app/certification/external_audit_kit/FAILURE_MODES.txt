@@ -1,0 +1,5 @@
+Hash mismatch between computed and expected.
+One or more required files missing.
+File order not canonical (alphabetical by filename).
+Content not byte-identical to reference.
+Verification script output non-deterministic.

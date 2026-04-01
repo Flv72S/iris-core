@@ -1,0 +1,61 @@
+{
+  "finalResult": "PASS",
+  "config": {
+    "byzantineRate": 0.3,
+    "corruptionRate": 0.2,
+    "duplicationRate": 0.5,
+    "dropRate": 0.3
+  },
+  "scenarios": [
+    {
+      "name": "corrupted_decisions",
+      "pass": true,
+      "detail": "rejected at boundary"
+    },
+    {
+      "name": "fake_decision_ids",
+      "pass": true,
+      "detail": "rejects=5 aggInvalid=5"
+    },
+    {
+      "name": "reorder_tamper",
+      "pass": true,
+      "detail": "elapsed=417"
+    },
+    {
+      "name": "fork_journal_heal",
+      "pass": true,
+      "detail": "misaligned=true forksResolved=1"
+    },
+    {
+      "name": "random_noise",
+      "pass": true,
+      "detail": "no crash"
+    },
+    {
+      "name": "byzantine_majority",
+      "pass": true,
+      "detail": "converged=true"
+    },
+    {
+      "name": "honest_majority",
+      "pass": true,
+      "detail": "elapsed=876"
+    }
+  ],
+  "byzantine": {
+    "invalidDecisionsRejected": 7,
+    "corruptedMessagesHandled": 0,
+    "forksResolved": 1,
+    "systemStable": true,
+    "converged": true,
+    "honestMajority": true
+  },
+  "ordering": {
+    "deterministic": true,
+    "sameExecutionOrder": true,
+    "orderingViolations": 0,
+    "replayMatch": true
+  },
+  "errors": []
+}

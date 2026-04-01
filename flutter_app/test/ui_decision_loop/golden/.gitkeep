@@ -1,0 +1,2 @@
+# Golden images: decision_loop_1.png, decision_loop_3.png
+# Generate with: flutter test test/ui_decision_loop/golden_end_to_end_test.dart --update-goldens

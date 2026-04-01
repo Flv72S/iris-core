@@ -1,0 +1,24 @@
+name: iris_flutter_app
+description: IRIS UI Clean Architecture bootstrap
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.0
+  aws_s3_api: ^2.0.0
+  cryptography: ^2.7.0
+  uuid: ^4.2.2
+  flutter_secure_storage: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

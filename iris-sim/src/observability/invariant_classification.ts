@@ -1,0 +1,33 @@
+export type InvariantVerificationClass =
+  | 'SN_DETERMINISTIC'
+  | 'RT_DETERMINISTIC'
+  | 'TS_CONTROLLED'
+  | 'NON_DETERMINISTIC';
+
+/**
+ * Base classification map prepared for ADR-003.B generation.
+ * Kept minimal and backward-compatible (data only, no runtime behavior changes).
+ */
+export const RUNTIME_INVARIANT_CLASSIFICATION: Record<string, InvariantVerificationClass> = {
+  'INV-001': 'SN_DETERMINISTIC',
+  'INV-002': 'SN_DETERMINISTIC',
+  'INV-003': 'TS_CONTROLLED',
+  'INV-004': 'SN_DETERMINISTIC',
+  'INV-005': 'RT_DETERMINISTIC',
+  'INV-006': 'NON_DETERMINISTIC',
+  'INV-007': 'SN_DETERMINISTIC',
+  'INV-008': 'RT_DETERMINISTIC',
+  'INV-009': 'RT_DETERMINISTIC',
+  'INV-010': 'RT_DETERMINISTIC',
+  'INV-011': 'SN_DETERMINISTIC',
+  'INV-012': 'SN_DETERMINISTIC',
+  'INV-013': 'SN_DETERMINISTIC',
+  'INV-014': 'RT_DETERMINISTIC',
+  'INV-015': 'RT_DETERMINISTIC',
+  'INV-016': 'RT_DETERMINISTIC',
+  'INV-017': 'RT_DETERMINISTIC',
+  'INV-018': 'RT_DETERMINISTIC',
+  'INV-019': 'RT_DETERMINISTIC',
+  'INV-020': 'SN_DETERMINISTIC',
+};
+

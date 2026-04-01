@@ -1,0 +1,7 @@
+{
+  "resolutionId": "cert-res-001",
+  "status": "ALLOWED",
+  "intentIds": ["cert-res-001:0:Focus:1736935200000"],
+  "intentCount": 1,
+  "frozenAt": "2025-01-15T10:00:00.000Z"
+}

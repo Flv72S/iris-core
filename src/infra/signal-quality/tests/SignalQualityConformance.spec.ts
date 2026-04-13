@@ -8,6 +8,7 @@
 // No meaning, no decisions, no product logic live here.
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { SignalEvent } from '../../signal-adapters/SignalEvent';
@@ -179,7 +180,7 @@ describe('Signal Quality — Conformance', () => {
             expect(
               line,
               `File ${file} must not import ${path}`
-            ).not.toMatch(new RegExp(path.replace(/\//g, '\\/'), 'i'));
+            ).not.toMatch(new RegExp(escapeRegExp(path), 'i'));
           }
         }
       }

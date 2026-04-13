@@ -8,6 +8,7 @@
 // Servono esclusivamente a rendere la demo affidabile e riproducibile.
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { UxContract } from '../../ux-contract';
@@ -125,7 +126,7 @@ describe('Demo Scenarios — Conformance', () => {
         for (const line of importLines) {
           for (const path of forbidden) {
             expect(line, `File ${file} should not import from ${path}`).not.toMatch(
-              new RegExp(path.replace('/', '\\/'), 'i')
+              new RegExp(escapeRegExp(path), 'i')
             );
           }
         }

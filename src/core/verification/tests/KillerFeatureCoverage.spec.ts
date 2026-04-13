@@ -4,6 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
+import { forbiddenImportPathSegmentRegex } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import {
@@ -50,7 +51,7 @@ describe('Killer Feature Coverage — Conformance', () => {
             expect(
               line,
               `File ${file} must not import ${path}`
-            ).not.toMatch(new RegExp(path.replace(/\//g, '\\/'), 'i'));
+            ).not.toMatch(forbiddenImportPathSegmentRegex(path));
           }
         }
       }

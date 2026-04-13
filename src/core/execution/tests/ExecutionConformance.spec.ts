@@ -8,6 +8,7 @@ import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { ExecutionAction } from '../ExecutionAction';
 import type { ExecutionContext } from '../ExecutionContext';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import {
   ExecutionEngine,
   EXECUTION_ENGINE_COMPONENT_ID,
@@ -180,7 +181,7 @@ describe('Execution — Conformance', () => {
             expect(
               line,
               `File ${file} must not import ${path}`
-            ).not.toMatch(new RegExp(path.replace(/\//g, '\\/'), 'i'));
+            ).not.toMatch(new RegExp(escapeRegExp(path), 'i'));
           }
         }
       }

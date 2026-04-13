@@ -8,6 +8,7 @@
 // They only expose what already happened in the external world.
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { SignalEvent } from '../SignalEvent';
@@ -125,7 +126,7 @@ describe('Signal Adapters — Conformance', () => {
         for (const line of importLines) {
           for (const path of forbidden) {
             expect(line, `File ${file} must not import ${path}`).not.toMatch(
-              new RegExp(path.replace(/\//g, '\\/'), 'i')
+              new RegExp(escapeRegExp(path), 'i')
             );
           }
         }

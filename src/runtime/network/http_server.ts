@@ -1,4 +1,5 @@
 import Fastify, { type FastifyInstance } from 'fastify';
+import rateLimit from '@fastify/rate-limit';
 
 import type { ClusterState } from '../../distributed/cluster_lifecycle_engine';
 import {
@@ -37,7 +38,6 @@ export class RuntimeHttpServer {
     private readonly handlers: RuntimeHttpServerHandlers,
   ) {
     this.app = Fastify({ logger: false });
-    this.registerRoutes();
   }
 
   private registerRoutes(): void {
@@ -104,6 +104,11 @@ export class RuntimeHttpServer {
   }
 
   async start(): Promise<void> {
+    await this.app.register(rateLimit, {
+      max: 200,
+      timeWindow: '15 minutes',
+    });
+    this.registerRoutes();
     await this.app.listen({ port: this.port, host: '0.0.0.0' });
   }
 

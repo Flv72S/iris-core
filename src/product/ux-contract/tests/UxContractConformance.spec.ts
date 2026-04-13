@@ -8,6 +8,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import type {
@@ -132,7 +133,7 @@ describe('UxContract — Conformance', () => {
       const forbiddenPaths = ['messaging-system', 'messagingSystem', 'iris/', 'Iris'];
       for (const line of importLines) {
         for (const path of forbiddenPaths) {
-          expect(line).not.toMatch(new RegExp(path, 'i'));
+          expect(line).not.toMatch(new RegExp(escapeRegExp(path), 'i'));
         }
       }
     });

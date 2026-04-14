@@ -9,16 +9,23 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { gracefulShutdown, setupShutdownHandlers, type ShutdownHandler } from '../shutdown/gracefulShutdown';
+import type { ShutdownHandler } from '../shutdown/gracefulShutdown';
 import { initializeLogger } from '../../observability/logger';
 
 describe('Graceful Shutdown', () => {
   beforeEach(() => {
+    vi.resetModules();
+    vi.clearAllMocks();
     initializeLogger('info');
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
   });
 
   describe('Shutdown handlers execution', () => {
     it('deve chiamare tutti gli handler in ordine', async () => {
+      const { gracefulShutdown } = await import('../shutdown/gracefulShutdown');
       const callOrder: string[] = [];
 
       const handlers: ShutdownHandler[] = [
@@ -48,6 +55,7 @@ describe('Graceful Shutdown', () => {
     });
 
     it('deve continuare anche se un handler fallisce', async () => {
+      const { gracefulShutdown } = await import('../shutdown/gracefulShutdown');
       const callOrder: string[] = [];
 
       const handlers: ShutdownHandler[] = [
@@ -80,6 +88,7 @@ describe('Graceful Shutdown', () => {
 
   describe('Shutdown timeout', () => {
     it('deve rispettare timeout', async () => {
+      const { gracefulShutdown } = await import('../shutdown/gracefulShutdown');
       const handlers: ShutdownHandler[] = [
         {
           name: 'slow-handler',
@@ -89,17 +98,24 @@ describe('Graceful Shutdown', () => {
         },
       ];
 
+      const exitSpy = vi
+        .spyOn(process, 'exit')
+        .mockImplementation((() => undefined as never) as (code?: string | number | null | undefined) => never);
+
       const startTime = Date.now();
       await gracefulShutdown(handlers, { timeoutMs: 500 });
       const duration = Date.now() - startTime;
 
       // Timeout dovrebbe essere rispettato (circa 500ms)
       expect(duration).toBeLessThan(1000);
+      expect(exitSpy).toHaveBeenCalledWith(1);
+      exitSpy.mockRestore();
     }, 10000);
   });
 
   describe('Multiple shutdown calls', () => {
     it('deve prevenire shutdown multipli', async () => {
+      const { gracefulShutdown } = await import('../shutdown/gracefulShutdown');
       const callCount: number[] = [];
 
       const handlers: ShutdownHandler[] = [

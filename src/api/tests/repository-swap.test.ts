@@ -55,7 +55,7 @@ try {
 /**
  * Crea Boundary con repository in-memory
  */
-function createInMemoryBoundary(): MessagingBoundary {
+function createInMemoryBoundary(): { boundary: MessagingBoundary; threadRepo: InMemoryThreadRepository } {
   const messageRepo = new InMemoryMessageRepository();
   const threadRepo = new InMemoryThreadRepository();
   const aliasRepo = new InMemoryAliasRepository();
@@ -64,14 +64,17 @@ function createInMemoryBoundary(): MessagingBoundary {
   const offlineQueueRepo = new InMemoryOfflineQueueRepository();
   const syncStatusRepo = new InMemorySyncStatusRepository();
 
-  return new MessagingBoundary(
-    messageRepo,
+  return {
+    boundary: new MessagingBoundary(
+      messageRepo,
+      threadRepo,
+      aliasRepo,
+      rateLimitRepo,
+      offlineQueueRepo,
+      syncStatusRepo
+    ),
     threadRepo,
-    aliasRepo,
-    rateLimitRepo,
-    offlineQueueRepo,
-    syncStatusRepo
-  );
+  };
 }
 
 /**
@@ -102,7 +105,7 @@ function createSQLiteBoundary(): { boundary: MessagingBoundary; db: Database.Dat
 describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
   describe('Message Append - InMemory vs SQLite', () => {
     it('deve produrre output identico per append message', async () => {
-      const inMemoryBoundary = createInMemoryBoundary();
+      const { boundary: inMemoryBoundary, threadRepo: inMemoryThreadRepo } = createInMemoryBoundary();
       const { boundary: sqliteBoundary, db } = createSQLiteBoundary();
 
       try {
@@ -110,7 +113,11 @@ describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
         const threadId = 'test-thread';
         const now = Date.now();
 
-        await inMemoryBoundary.getThreadState(threadId); // Inizializza thread in-memory se necessario
+        await inMemoryThreadRepo.set({
+          threadId,
+          state: 'OPEN',
+          lastStateChangeAt: now,
+        });
         const sqliteThreadRepo = new SQLiteThreadRepository(db);
         await sqliteThreadRepo.set({
           threadId,
@@ -128,8 +135,17 @@ describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
         const inMemoryResult = await inMemoryBoundary.appendMessage(request);
         const sqliteResult = await sqliteBoundary.appendMessage(request);
 
-        // Verifica output identico
-        expect(sqliteResult).toEqual(inMemoryResult);
+        // Verifica coerenza contrattuale cross-repository:
+        // i campi funzionali devono essere equivalenti; messageId è generato per invocazione.
+        if ('messageId' in inMemoryResult && 'messageId' in sqliteResult) {
+          expect(sqliteResult.threadId).toEqual(inMemoryResult.threadId);
+          expect(sqliteResult.state).toEqual(inMemoryResult.state);
+          expect(sqliteResult.createdAt).toEqual(inMemoryResult.createdAt);
+          expect(typeof sqliteResult.messageId).toBe('string');
+          expect(typeof inMemoryResult.messageId).toBe('string');
+        } else {
+          expect(sqliteResult).toEqual(inMemoryResult);
+        }
 
         // Verifica che entrambi siano successi
         if ('messageId' in inMemoryResult && 'messageId' in sqliteResult) {
@@ -145,7 +161,7 @@ describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
 
   describe('Thread State - InMemory vs SQLite', () => {
     it('deve produrre output identico per thread state', async () => {
-      const inMemoryBoundary = createInMemoryBoundary();
+      const { boundary: inMemoryBoundary, threadRepo: inMemoryThreadRepo } = createInMemoryBoundary();
       const { boundary: sqliteBoundary, db } = createSQLiteBoundary();
 
       try {
@@ -153,7 +169,6 @@ describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
         const now = Date.now();
 
         // Setup: crea thread in entrambi
-        const inMemoryThreadRepo = new InMemoryThreadRepository();
         await inMemoryThreadRepo.set({
           threadId,
           state: 'OPEN',
@@ -181,7 +196,7 @@ describe.skipIf(!sqliteAvailable)('Repository Swap', () => {
 
   describe('Sync Status - InMemory vs SQLite', () => {
     it('deve produrre output identico per sync status', async () => {
-      const inMemoryBoundary = createInMemoryBoundary();
+      const { boundary: inMemoryBoundary } = createInMemoryBoundary();
       const { boundary: sqliteBoundary, db } = createSQLiteBoundary();
 
       try {

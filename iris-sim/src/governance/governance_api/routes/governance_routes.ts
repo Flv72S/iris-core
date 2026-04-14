@@ -14,6 +14,16 @@ export type RouteHandler = (
   match: GovernanceRouteMatch
 ) => { status: number; body: unknown; responseHash?: string };
 
+/** Fixed set of paths; prevents dynamic dispatch on user-controlled URL segments (CodeQL). */
+const ALLOWED_GOVERNANCE_PATHS = new Set([
+  '/governance/tier',
+  '/governance/certificate',
+  '/governance/sla',
+  '/governance/snapshot',
+  '/governance/history',
+  '/governance/state-at',
+]);
+
 export function createGovernanceRoutes(controller: GovernanceController): Map<string, RouteHandler> {
   const routes = new Map<string, RouteHandler>();
 
@@ -42,6 +52,9 @@ export function matchGovernanceRoute(
   const query: Record<string, string> = {};
   const qIndex = pathname.indexOf('?');
   const path = qIndex >= 0 ? pathname.slice(0, qIndex) : pathname;
+  if (!ALLOWED_GOVERNANCE_PATHS.has(path)) {
+    return null;
+  }
   const qs = qIndex >= 0 ? pathname.slice(qIndex + 1) : '';
   if (qs) {
     for (const part of qs.split('&')) {

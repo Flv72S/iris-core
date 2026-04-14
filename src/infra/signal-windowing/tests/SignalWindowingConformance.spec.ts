@@ -8,6 +8,7 @@
 // Meaning starts later, not here.
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { QualifiedSignalEvent } from '../../signal-quality/QualifiedSignalEvent';
@@ -203,7 +204,7 @@ describe('Signal Windowing — Conformance', () => {
             expect(
               line,
               `File ${file} must not import ${path}`
-            ).not.toMatch(new RegExp(path.replace(/\//g, '\\/'), 'i'));
+            ).not.toMatch(new RegExp(escapeRegExp(path), 'i'));
           }
         }
       }

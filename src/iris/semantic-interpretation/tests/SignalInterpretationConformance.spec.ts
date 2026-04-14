@@ -8,6 +8,7 @@
 // Meaning exists here, action does not.
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { QualifiedSignalEvent } from '../../../infra/signal-quality/QualifiedSignalEvent';
@@ -220,7 +221,7 @@ describe('Semantic Interpretation — Conformance', () => {
         for (const line of lines) {
           for (const path of forbidden) {
             expect(line, `File ${file} must not import ${path}`).not.toMatch(
-              new RegExp(path.replace(/\//g, '\\/'), 'i')
+              new RegExp(escapeRegExp(path), 'i')
             );
           }
         }

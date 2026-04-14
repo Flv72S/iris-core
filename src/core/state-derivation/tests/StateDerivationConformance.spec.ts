@@ -4,6 +4,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
+import { escapeRegExp } from '../../../test-support/regexpEscapes';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import type { SemanticSignal } from '../../../iris/semantic-interpretation/SemanticSignal';
@@ -93,7 +94,7 @@ describe('State Derivation — Conformance', () => {
             expect(
               line,
               `File ${file} must not import ${path}`
-            ).not.toMatch(new RegExp(path.replace(/\//g, '\\/'), 'i'));
+            ).not.toMatch(new RegExp(escapeRegExp(path), 'i'));
           }
         }
       }

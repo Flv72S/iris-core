@@ -3,18 +3,16 @@
  * Killer feature: voice ready. suggestedLens = voice → ready true; confidenceBand low → ready false.
  */
 
-import type { FeaturePipeline } from '../../../FeaturePipeline';
-import type { FeaturePipelineInput } from '../../../FeaturePipelineInput';
+import type { FeaturePipeline } from '../../FeaturePipeline';
+import type { FeaturePipelineInput } from '../../FeaturePipelineInput';
 import type { VoiceReadinessOutput } from './VoiceReadinessOutput';
 
 export const VOICE_READINESS_PIPELINE_ID = 'voice-readiness';
 
-export function createVoiceReadinessPipeline(): FeaturePipeline<
-  FeaturePipelineInput,
-  VoiceReadinessOutput
-> {
+export function createVoiceReadinessPipeline(): FeaturePipeline {
   return {
     id: VOICE_READINESS_PIPELINE_ID,
+    featureType: 'FOCUS_GUARD',
     run(input: FeaturePipelineInput): VoiceReadinessOutput {
       const { experience, now } = input;
       const ready =

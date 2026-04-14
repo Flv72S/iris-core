@@ -6,6 +6,6 @@
 import type { FeaturePipeline } from './FeaturePipeline';
 
 export interface FeaturePipelineRegistry {
-  register(pipeline: FeaturePipeline<unknown, unknown>): void;
-  getAll(): readonly FeaturePipeline<unknown, unknown>[];
+  register(pipeline: FeaturePipeline): void;
+  getAll(): readonly FeaturePipeline[];
 }

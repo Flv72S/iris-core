@@ -18,7 +18,7 @@ export type PluginCapability =
 export type PluginCapabilitySet = readonly PluginCapability[];
 
 export function hasCapability(
-  set: PluginCapabilitySet | undefined,
+  set: readonly string[] | PluginCapabilitySet | undefined,
   capability: PluginCapability
 ): boolean {
   if (!set || set.length === 0) return false;
@@ -29,7 +29,7 @@ export function hasCapability(
  * Verifica se la capability è dichiarata nel set. Non valuta policy.
  */
 export function requireCapability(
-  set: PluginCapabilitySet | undefined,
+  set: readonly string[] | PluginCapabilitySet | undefined,
   capability: PluginCapability
 ): CapabilityDecision {
   if (!hasCapability(set, capability)) {

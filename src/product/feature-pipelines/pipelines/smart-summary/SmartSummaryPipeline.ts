@@ -3,20 +3,18 @@
  * Killer feature: summary da experience + dominantSignals. NEUTRAL → null. Max 5 highlights.
  */
 
-import type { FeaturePipeline } from '../../../FeaturePipeline';
-import type { FeaturePipelineInput } from '../../../FeaturePipelineInput';
+import type { FeaturePipeline } from '../../FeaturePipeline';
+import type { FeaturePipelineInput } from '../../FeaturePipelineInput';
 import type { SmartSummaryOutput } from './SmartSummaryOutput';
 
 const MAX_HIGHLIGHTS = 5;
 
 export const SMART_SUMMARY_PIPELINE_ID = 'smart-summary';
 
-export function createSmartSummaryPipeline(): FeaturePipeline<
-  FeaturePipelineInput,
-  SmartSummaryOutput
-> {
+export function createSmartSummaryPipeline(): FeaturePipeline {
   return {
     id: SMART_SUMMARY_PIPELINE_ID,
+    featureType: 'SMART_INBOX',
     run(input: FeaturePipelineInput): SmartSummaryOutput | null {
       if (input.experience.label === 'NEUTRAL') return null;
       const { experience, now } = input;

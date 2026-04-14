@@ -8,6 +8,7 @@ export type ClusterPhase =
   | 'READY'
   | 'RUNNING'
   | 'DEGRADED'
+  | 'HALTED'
   | 'STOPPING'
   | 'STOPPED'
   | 'FAILED';

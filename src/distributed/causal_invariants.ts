@@ -605,7 +605,7 @@ export const CAUSAL_INVARIANT_DECLARATIONS: readonly CausalDistributedInvariant[
 
 export type CausalInvariantSuiteRun = {
   results: ReadonlyArray<{ id: string; status: 'OK' | 'VIOLATED'; evidence?: string }>;
-  coverage: InvariantCoverageEntry[];
+  coverage: readonly InvariantCoverageEntry[];
 };
 
 export function runCausalInvariantSuite(input: NormalizedGlobalInput): CausalInvariantSuiteRun {

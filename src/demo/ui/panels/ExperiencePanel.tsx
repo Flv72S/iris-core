@@ -6,7 +6,7 @@
 import React from 'react';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
-import type { UxExperienceState } from '../../../../product/ux-experience/UxExperienceState';
+import type { UxExperienceState } from '../../../product/ux-experience/UxExperienceState';
 
 interface ExperiencePanelProps {
   experience: UxExperienceState;

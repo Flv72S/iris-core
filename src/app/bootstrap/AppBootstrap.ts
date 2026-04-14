@@ -20,6 +20,8 @@
  */
 
 import type { AppConfig } from './types';
+
+export type { AppConfig } from './types';
 import { createRepositories } from './PersistenceFactory';
 import { createHttpServerBundle } from './HttpServerFactory';
 import { MessagingBoundary } from '../../api/boundary/MessagingBoundary';

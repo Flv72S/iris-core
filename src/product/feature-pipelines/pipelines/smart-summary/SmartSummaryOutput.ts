@@ -3,7 +3,7 @@
  * Output UX per Smart Summary.
  */
 
-import type { ConfidenceBand } from '../../../../ux-experience/UxExperienceState';
+import type { ConfidenceBand } from '../../../ux-experience/UxExperienceState';
 
 export interface SmartSummaryOutput {
   readonly title: string;

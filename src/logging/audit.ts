@@ -262,7 +262,7 @@ export function deriveAuditRuntime(logEntries: LogEntry[], override?: Partial<Au
 export function normalizeAuditSnapshot(
   snapshot: AuditSnapshot,
   mode: 'export' | 'compare' = 'export',
-): CanonicalAuditSnapshot {
+): AuditSnapshot {
   const sortedEntries = normalizeLogEntriesForAudit(snapshot.logEntries);
   const sortedTrace = sortTraceabilityRows(snapshot.traceability);
   let next: AuditSnapshot = {
@@ -277,11 +277,11 @@ export function normalizeAuditSnapshot(
       indexPath: typeof next.indexPath === 'string' ? next.indexPath.split(path.sep).join('/') : next.indexPath,
     };
   }
-  return canonicalizeKeysDeep(next) as CanonicalAuditSnapshot;
+  return canonicalizeKeysDeep(next) as AuditSnapshot;
 }
 
 /** Single source of truth for snapshot equality / hash (ADR-003 CERT). */
-export type CanonicalAuditSnapshot = ReturnType<typeof normalizeAuditSnapshot>;
+export type CanonicalAuditSnapshot = AuditSnapshot;
 
 /**
  * **Mandatory** contract: never compare raw snapshots with JSON.stringify or deepEqual —

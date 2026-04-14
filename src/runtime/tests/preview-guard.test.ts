@@ -10,7 +10,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import Fastify from 'fastify';
 import { addPreviewGuard } from '../../api/http/middleware/previewGuard';
 import { addCorrelationIdMiddleware } from '../../api/http/middleware/correlation';
-import { initializeLogger } from '../../../observability/logger';
+import { initializeLogger } from '../../observability/logger';
 
 describe('Preview Guard', () => {
   let server: any;

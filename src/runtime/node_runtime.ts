@@ -121,7 +121,7 @@ export class IRISNodeRuntime {
   }
 
   async submitDecision(runtimeDecision: ComplianceDecision | RuntimeDecision): Promise<void> {
-    const decision = 'decision' in (runtimeDecision as Record<string, unknown>)
+    const decision = 'decision' in (runtimeDecision as unknown as Record<string, unknown>)
       ? (runtimeDecision as RuntimeDecision).decision
       : (runtimeDecision as ComplianceDecision);
     const before = deepClone(runtimeDecision);

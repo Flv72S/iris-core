@@ -178,7 +178,7 @@ export const DISTRIBUTED_INVARIANT_DECLARATIONS: readonly DistributedInvariant[]
 
 export type DistributedInvariantSuiteRun = {
   results: ReadonlyArray<{ id: string; status: 'OK' | 'VIOLATED'; evidence?: string }>;
-  coverage: InvariantCoverageEntry[];
+  coverage: readonly InvariantCoverageEntry[];
 };
 
 export function runDistributedInvariantSuite(input: NormalizedGlobalInput): DistributedInvariantSuiteRun {

@@ -3,6 +3,7 @@
  * 16F.6.B.CLOSURE — Deterministic object merge (winner takes conflicting keys).
  */
 import { canonicalizeKeysDeep, stableStringify } from '../logging/audit';
+import type { DistributedEvent } from './global_input';
 
 /** Object payloads: overlapping own enumerable keys (deterministic conflict domain). */
 export function payloadsOverlap(a: unknown, b: unknown): boolean {

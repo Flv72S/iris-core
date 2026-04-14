@@ -69,7 +69,7 @@ function deriveExperienceCandidates(
         label: 'FOCUSED',
         confidence: 0.9,
         supportingStates: Object.freeze(['FOCUS_ACTIVE']),
-      })
+      }) as DerivedExperienceCandidate
     );
   }
   if (types.has('OVERLOADED')) {
@@ -78,7 +78,7 @@ function deriveExperienceCandidates(
         label: 'OVERLOADED',
         confidence: 0.85,
         supportingStates: Object.freeze(['OVERLOADED']),
-      })
+      }) as DerivedExperienceCandidate
     );
   }
   if (types.has('WELLBEING_BLOCK')) {
@@ -87,7 +87,7 @@ function deriveExperienceCandidates(
         label: 'BLOCKED',
         confidence: 0.9,
         supportingStates: Object.freeze(['WELLBEING_BLOCK']),
-      })
+      }) as DerivedExperienceCandidate
     );
   }
   if (types.has('WAITING_REPLY')) {
@@ -96,7 +96,7 @@ function deriveExperienceCandidates(
         label: 'WAITING',
         confidence: 0.8,
         supportingStates: Object.freeze(['WAITING_REPLY']),
-      })
+      }) as DerivedExperienceCandidate
     );
   }
   if (out.length === 0) {
@@ -105,7 +105,7 @@ function deriveExperienceCandidates(
         label: 'NEUTRAL',
         confidence: 0.5,
         supportingStates: Object.freeze([]),
-      })
+      }) as DerivedExperienceCandidate
     );
   }
   return out;
@@ -131,7 +131,7 @@ function deriveFeatureEligibility(
         eligible,
         reason: eligible ? 'FOCUS_ACTIVE state present' : 'FOCUS_ACTIVE state not present',
         derivedFromStates: Object.freeze(eligible ? ['FOCUS_ACTIVE'] : []),
-      })
+      }) as FeatureEligibility
     );
   }
   for (const fid of WELLBEING_FEATURE_IDS) {
@@ -142,7 +142,7 @@ function deriveFeatureEligibility(
         eligible,
         reason: eligible ? 'WELLBEING_BLOCK state present' : 'WELLBEING_BLOCK state not present',
         derivedFromStates: Object.freeze(eligible ? ['WELLBEING_BLOCK'] : []),
-      })
+      }) as FeatureEligibility
     );
   }
   for (const fid of INBOX_FEATURE_IDS) {
@@ -153,7 +153,7 @@ function deriveFeatureEligibility(
         eligible: !ineligible,
         reason: ineligible ? 'OVERLOADED: inbox features suppressed' : 'No OVERLOADED state',
         derivedFromStates: Object.freeze(ineligible ? ['OVERLOADED'] : []),
-      })
+      }) as FeatureEligibility
     );
   }
   return out;

@@ -130,14 +130,15 @@ export function serializeAuditEntry(entry: ResolutionAuditEntry): string {
  */
 export function deserializeAuditEntry(json: string): ResolutionAuditEntry {
   const raw = JSON.parse(json) as Record<string, unknown>;
-  const decisionsSnapshot = (raw.decisionsSnapshot as unknown[])?.map((d) =>
-    Object.freeze({
-      authorityId: d.authorityId,
-      status: d.status,
-      ruleId: d.ruleId ?? null,
-      reason: d.reason ?? null,
-    })
-  ) ?? [];
+  const decisionsSnapshot = (raw.decisionsSnapshot as unknown[])?.map((d: unknown) => {
+    const row = d as Record<string, unknown>;
+    return Object.freeze({
+      authorityId: row.authorityId,
+      status: row.status,
+      ruleId: row.ruleId ?? null,
+      reason: row.reason ?? null,
+    });
+  }) ?? [];
   const entry: ResolutionAuditEntry = Object.freeze({
     resolutionId: String(raw.resolutionId ?? ''),
     featureId: String(raw.featureId ?? ''),

@@ -43,7 +43,7 @@ export interface ThreadStateTransitionRequestDTO {
 export interface ThreadStateTransitionResponseDTO {
   readonly threadId: string;
   readonly previousState: 'OPEN' | 'PAUSED' | 'CLOSED';
-  readonly newState: 'PAUSED' | 'CLOSED' | 'ARCHIVED';
+  readonly newState: 'OPEN' | 'PAUSED' | 'CLOSED' | 'ARCHIVED';
   readonly transitionedAt: number;
 }
 
@@ -55,5 +55,5 @@ export interface ThreadStateErrorDTO {
   readonly message: string;
   readonly threadId?: string;
   readonly currentState?: ThreadStateDTO;
-  readonly requestedState?: 'PAUSED' | 'CLOSED' | 'ARCHIVED';
+  readonly requestedState?: 'OPEN' | 'PAUSED' | 'CLOSED' | 'ARCHIVED';
 }

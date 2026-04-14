@@ -3,7 +3,7 @@
  * Deriva decisioni di cache solo dalla ReadSLA. Nessun storage, nessun side-effect.
  */
 
-import type { ReadSLA } from '../../core/read-sla';
+import type { ReadSLA } from '../../core/read-sla/ReadSLA';
 import type { ReadCacheDecision, ReadCacheStrategy } from './ReadCacheStrategy';
 
 /** Soglia sotto cui maxStalenessMs riduce il TTL (ms). */

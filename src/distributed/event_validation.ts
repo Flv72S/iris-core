@@ -33,8 +33,10 @@ export { DistributedInputValidationError } from './errors';
 
 export type GlobalInputValidationResult = {
   valid: boolean;
-  errors: string[];
-  invariantCoverage: InvariantCoverageEntry[];
+  errors?: string[];
+  structuralErrors?: string[];
+  invariantCoverage?: InvariantCoverageEntry[];
+  causalInvariantCoverage?: InvariantCoverageEntry[];
 };
 
 function assertNonEmptyString(label: string, value: unknown): asserts value is string {

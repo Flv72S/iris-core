@@ -6,10 +6,10 @@
 
 import type { IrisGovernanceSnapshot } from '../IrisGovernanceSnapshot';
 import type { IrisKillSwitchSnapshot } from '../binding/IrisKillSwitchSnapshot';
-import type { IrisInterpretationModel } from '../../../interpretation';
-import type { IrisOrchestrationResult } from '../../../orchestration';
-import type { IrisMessageBinding } from '../../../messaging';
-import type { IrisRenderResult } from '../../../rendering';
+import type { IrisInterpretationModel } from '../../interpretation';
+import type { IrisOrchestrationResult } from '../../orchestration';
+import type { IrisMessageBinding } from '../../messaging';
+import type { IrisRenderResult } from '../../rendering';
 import type { IrisAuditEntry, IrisAuditEntryType } from './IrisAuditEntry';
 import type { IrisAuditSnapshot } from './IrisAuditSnapshot';
 

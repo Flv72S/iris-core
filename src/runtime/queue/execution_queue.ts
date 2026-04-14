@@ -59,7 +59,7 @@ export class ExecutionQueue {
     return new Promise((resolve, reject) => {
       this.queue.enqueue(async () => {
         try {
-          const canonical = deepClone('decision' in (runtimeDecision as Record<string, unknown>)
+          const canonical = deepClone('decision' in (runtimeDecision as unknown as Record<string, unknown>)
             ? (runtimeDecision as RuntimeDecision).decision
             : (runtimeDecision as ComplianceDecision));
           const decisionId = deriveComplianceDecisionId(canonical);

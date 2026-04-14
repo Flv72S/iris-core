@@ -102,7 +102,7 @@ export interface ThreadStateResponse {
  */
 export interface ThreadStateTransitionRequest {
   readonly threadId: string;
-  readonly targetState: 'PAUSED' | 'CLOSED' | 'ARCHIVED';
+  readonly targetState: 'OPEN' | 'PAUSED' | 'CLOSED' | 'ARCHIVED';
   readonly reason?: string;
 }
 
@@ -115,7 +115,7 @@ export interface ThreadStateTransitionRequest {
 export interface ThreadStateTransitionResponse {
   readonly threadId: string;
   readonly previousState: 'OPEN' | 'PAUSED' | 'CLOSED';
-  readonly newState: 'PAUSED' | 'CLOSED' | 'ARCHIVED';
+  readonly newState: 'OPEN' | 'PAUSED' | 'CLOSED' | 'ARCHIVED';
   readonly transitionedAt: number;
 }
 
@@ -133,7 +133,7 @@ export interface ThreadStateError {
   readonly message: string;
   readonly threadId?: string;
   readonly currentState?: ThreadState;
-  readonly requestedState?: 'PAUSED' | 'CLOSED' | 'ARCHIVED';
+  readonly requestedState?: 'OPEN' | 'PAUSED' | 'CLOSED' | 'ARCHIVED';
 }
 
 // ============================================================================

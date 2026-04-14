@@ -48,7 +48,7 @@ export interface LogEntry {
  * Logger che output sempre JSON strutturato.
  */
 export class StructuredLogger {
-  private service: string = 'iris-api';
+  private service: 'iris-api' = 'iris-api';
   private minLevel: LogLevel = 'info';
 
   constructor(minLevel: LogLevel = 'info') {

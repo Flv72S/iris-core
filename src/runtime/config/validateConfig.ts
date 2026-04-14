@@ -110,21 +110,18 @@ export function validateAndNormalizeConfig(rawConfig: {
     ? rawConfig.httpPort 
     : parseInt(process.env.HTTP_PORT || '3000', 10);
 
-  // Costruisce config
+  const sqliteFilePath =
+    persistence === 'sqlite' ? rawConfig.sqliteFilePath || process.env.SQLITE_FILE_PATH || ':memory:' : undefined;
+
   const config: AppConfig = {
     persistence,
     http: {
       port: httpPort,
     },
+    ...(persistence === 'sqlite' && sqliteFilePath !== undefined
+      ? { sqlite: { filePath: sqliteFilePath } }
+      : {}),
   };
-
-  // Aggiunge SQLite config se necessario
-  if (persistence === 'sqlite') {
-    const sqliteFilePath = rawConfig.sqliteFilePath || process.env.SQLITE_FILE_PATH || ':memory:';
-    config.sqlite = {
-      filePath: sqliteFilePath,
-    };
-  }
 
   // Valida config
   validateConfig(config);

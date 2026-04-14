@@ -41,8 +41,8 @@ export interface ShutdownHandler {
  * Stato shutdown
  */
 interface ShutdownState {
-  readonly inProgress: boolean;
-  readonly startTime: number | null;
+  inProgress: boolean;
+  startTime: number | null;
 }
 
 let shutdownState: ShutdownState = {

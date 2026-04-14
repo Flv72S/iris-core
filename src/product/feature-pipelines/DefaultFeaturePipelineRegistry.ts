@@ -7,13 +7,13 @@ import type { FeaturePipeline } from './FeaturePipeline';
 import type { FeaturePipelineRegistry } from './FeaturePipelineRegistry';
 
 export class DefaultFeaturePipelineRegistry implements FeaturePipelineRegistry {
-  private readonly pipelines: FeaturePipeline<unknown, unknown>[] = [];
+  private readonly pipelines: FeaturePipeline[] = [];
 
-  register(pipeline: FeaturePipeline<unknown, unknown>): void {
+  register(pipeline: FeaturePipeline): void {
     this.pipelines.push(pipeline);
   }
 
-  getAll(): readonly FeaturePipeline<unknown, unknown>[] {
+  getAll(): readonly FeaturePipeline[] {
     return this.pipelines;
   }
 }

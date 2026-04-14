@@ -3,8 +3,8 @@
  * Killer feature: focus level da experience. FOCUSED → high, OVERLOADED → low. confidenceBand influenza focusReason.
  */
 
-import type { FeaturePipeline } from '../../../FeaturePipeline';
-import type { FeaturePipelineInput } from '../../../FeaturePipelineInput';
+import type { FeaturePipeline } from '../../FeaturePipeline';
+import type { FeaturePipelineInput } from '../../FeaturePipelineInput';
 import type { DailyFocusOutput, FocusLevel } from './DailyFocusOutput';
 
 export const DAILY_FOCUS_PIPELINE_ID = 'daily-focus';
@@ -16,12 +16,10 @@ function focusLevelFromExperience(label: string): FocusLevel {
   return 'low';
 }
 
-export function createDailyFocusPipeline(): FeaturePipeline<
-  FeaturePipelineInput,
-  DailyFocusOutput
-> {
+export function createDailyFocusPipeline(): FeaturePipeline {
   return {
     id: DAILY_FOCUS_PIPELINE_ID,
+    featureType: 'SMART_INBOX',
     run(input: FeaturePipelineInput): DailyFocusOutput {
       const { experience, now } = input;
       const focusLevel = focusLevelFromExperience(experience.label);

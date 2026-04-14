@@ -3,7 +3,7 @@
  * Decide se e come cacheare un read model. Nessuna memorizzazione, nessun I/O.
  */
 
-import type { ReadSLA } from '../../core/read-sla';
+import type { ReadSLA } from '../../core/read-sla/ReadSLA';
 
 /**
  * Decisione di cache: raccomandazioni, non enforcement.

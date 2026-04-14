@@ -262,7 +262,7 @@ export async function getSyncStatus(
     isOnline, // Esplicito, non inferito
     lastSyncAt: lastSyncAtRounded, // Esplicito, non derivato
     pendingMessagesCount, // Esplicito, non derivato
-    estimatedSyncLatency, // Esplicito, non inferito
+    estimatedSyncLatency: estimatedSyncLatency ?? undefined,
   };
 }
 

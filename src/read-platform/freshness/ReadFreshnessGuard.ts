@@ -4,7 +4,7 @@
  * Nessun side-effect, nessun blocco, nessuna eccezione.
  */
 
-import type { ReadSLA } from '../../core/read-sla';
+import type { ReadSLA } from '../../core/read-sla/ReadSLA';
 import type { ReadFreshnessResult } from './ReadFreshness';
 
 export class ReadFreshnessGuard {

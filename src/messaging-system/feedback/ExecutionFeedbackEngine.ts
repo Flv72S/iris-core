@@ -75,12 +75,12 @@ export class ExecutionFeedbackEngine {
     executionResults: ExecutionResultSnapshot | readonly ExecutionResultSnapshot[],
     registry: ExecutionFeedbackRegistry
   ): ExecutionFeedbackSnapshot {
+    const firstSnapshot = Array.isArray(executionResults)
+      ? executionResults[0]
+      : executionResults;
+    const firstCompletedAt = firstSnapshot?.completedAt;
     const derivedAt =
-      typeof executionResults === 'object' && Array.isArray(executionResults)
-        ? executionResults.length > 0 && executionResults[0].completedAt
-          ? observedAtFromCompletedAt(executionResults[0].completedAt)
-          : 0
-        : observedAtFromCompletedAt(executionResults.completedAt);
+      firstCompletedAt != null ? observedAtFromCompletedAt(firstCompletedAt) : 0;
 
     if (!isExecutionFeedbackEnabled(registry)) {
       return Object.freeze({

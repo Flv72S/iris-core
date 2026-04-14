@@ -33,7 +33,7 @@ export class FeaturePipelineEngine {
     const results: FeatureOutput[] = [];
 
     for (const pipeline of this.pipelines) {
-      const out = pipeline.run(input);
+      const out = pipeline.run(input) as FeatureOutput | null;
       if (out == null) continue;
 
       if (policyContext != null && 'featureId' in out) {

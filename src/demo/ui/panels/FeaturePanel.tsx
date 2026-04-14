@@ -7,7 +7,7 @@ import React from 'react';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { Divider } from '../components/Divider';
-import type { OrchestratedFeature } from '../../../../product/orchestration/OrchestratedFeature';
+import type { OrchestratedFeature } from '../../../product/orchestration/OrchestratedFeature';
 
 interface FeaturePanelProps {
   features: readonly OrchestratedFeature[];

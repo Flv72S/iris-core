@@ -85,7 +85,7 @@ function applyAction<TCluster extends ClusterStateExecutionInput>(
   action: ComplianceAction,
   timestamp: number,
 ): TCluster {
-  const base: Record<string, unknown> = { ...cluster };
+  const base: Record<string, unknown> = { ...(cluster as unknown as Record<string, unknown>) };
   if (action === 'HALT_CLUSTER') {
     base.globalPhase = 'HALTED';
     base.transitionLocks = Object.freeze({ all: true });
@@ -106,7 +106,7 @@ function mergeJournal<TCluster extends ClusterStateExecutionInput>(
   cluster: TCluster,
   record: ComplianceExecutionRecord,
 ): TCluster {
-  const prior = cluster.executionJournal ?? Object.freeze({});
+  const prior = (cluster.executionJournal ?? Object.freeze({})) as Record<string, ComplianceExecutionRecord>;
   const nextJournalObj = {
     ...prior,
     [record.decisionId]: record,

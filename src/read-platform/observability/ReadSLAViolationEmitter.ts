@@ -4,7 +4,7 @@
  */
 
 import type { ReadFreshnessResult } from '../freshness/ReadFreshness';
-import type { ReadSLA } from '../../core/read-sla';
+import type { ReadSLA } from '../../core/read-sla/ReadSLA';
 import type { ReadSLAViolationSignal } from './ReadSLAViolation';
 
 /**

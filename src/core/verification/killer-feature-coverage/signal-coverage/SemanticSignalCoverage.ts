@@ -30,7 +30,7 @@ const REQUIRED_SIGNALS: Readonly<Record<KillerFeatureId, readonly SemanticSignal
     'wellbeing-protection': Object.freeze(['WELLBEING_RISK']),
     'cognitive-load-awareness': Object.freeze(['OVERLOAD_CONTEXT', 'INTERRUPTION_CONTEXT']),
     'contextual-readiness': Object.freeze(['IDLE_CONTEXT', 'FOCUS_CONTEXT', 'WAITING_CONTEXT']),
-  });
+  }) as Readonly<Record<KillerFeatureId, readonly SemanticSignalType[]>>;
 
 const ALL_SET = new Set(ALL_SEMANTIC_SIGNAL_TYPES);
 

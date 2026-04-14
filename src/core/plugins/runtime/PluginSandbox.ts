@@ -50,7 +50,7 @@ export class PluginSandbox {
     args: unknown[],
     context: PluginContext
   ): Promise<PluginExecutionError | null> {
-    const hook = (plugin as Record<string, unknown>)[hookName];
+    const hook = (plugin as unknown as Record<string, unknown>)[hookName];
     if (typeof hook !== 'function') {
       return null;
     }

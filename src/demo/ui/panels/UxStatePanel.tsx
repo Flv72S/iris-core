@@ -6,7 +6,8 @@
 import React from 'react';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
-import type { UxStateSnapshot } from '../../../../messaging-system/ux-state/UxStateSnapshot';
+import type { UxState } from '../../../messaging-system/ux-state/UxState';
+import type { UxStateSnapshot } from '../../../messaging-system/ux-state/UxStateSnapshot';
 
 interface UxStatePanelProps {
   uxState: UxStateSnapshot;
@@ -33,7 +34,7 @@ export function UxStatePanel({ uxState }: UxStatePanelProps): React.ReactElement
         </>
       ) : (
         <ul className="demo-state-list">
-          {uxState.states.map((s) => (
+          {uxState.states.map((s: UxState) => (
             <li key={s.stateId} className="demo-state-item">
               <Badge variant={severityVariant(s.severity)} size="medium">
                 {s.stateType}

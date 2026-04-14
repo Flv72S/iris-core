@@ -33,11 +33,11 @@ export type ActionLifecycleAuditEntry = {
 /** Transizioni ammesse: fromState → toState[]. */
 const ALLOWED_TRANSITIONS: Readonly<Record<ActionLifecycleState, readonly ActionLifecycleState[]>> =
   Object.freeze({
-    planned: Object.freeze(['executing']),
-    executing: Object.freeze(['applied', 'failed']),
-    applied: Object.freeze(['reverted']),
-    reverted: Object.freeze([]),
-    failed: Object.freeze([]),
+    planned: Object.freeze(['executing'] as const satisfies readonly ActionLifecycleState[]),
+    executing: Object.freeze(['applied', 'failed'] as const satisfies readonly ActionLifecycleState[]),
+    applied: Object.freeze(['reverted'] as const satisfies readonly ActionLifecycleState[]),
+    reverted: Object.freeze([] as const satisfies readonly ActionLifecycleState[]),
+    failed: Object.freeze([] as const satisfies readonly ActionLifecycleState[]),
   });
 
 /**

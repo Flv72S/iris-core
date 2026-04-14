@@ -17,10 +17,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
+
+      - name: Verify Flutter availability
+        run: flutter --version
+
+      - name: Verify Dart availability
+        run: dart --version
 
       - name: Install dependencies
         working-directory: flutter_app

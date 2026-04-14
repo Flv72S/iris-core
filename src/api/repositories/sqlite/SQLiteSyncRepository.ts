@@ -230,7 +230,7 @@ export class SQLiteAliasRepository implements AliasRepository {
 
   private prepareStatements(): void {
     this.existsStmt = this.db.prepare(`
-      SELECT EXISTS(SELECT 1 FROM aliases WHERE id = ?) as exists
+      SELECT EXISTS(SELECT 1 FROM aliases WHERE id = ?) as exists_flag
     `);
 
     this.isRootIdentityStmt = this.db.prepare(`
@@ -250,8 +250,8 @@ export class SQLiteAliasRepository implements AliasRepository {
   }
 
   async exists(aliasId: string): Promise<boolean> {
-    const result = this.existsStmt.get(aliasId) as { exists: number };
-    return result.exists === 1;
+    const result = this.existsStmt.get(aliasId) as { exists_flag: number };
+    return result.exists_flag === 1;
   }
 
   async isRootIdentity(aliasId: string): Promise<boolean> {

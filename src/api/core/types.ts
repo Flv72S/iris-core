@@ -57,7 +57,8 @@ export type MessageAppendErrorCode =
   | 'PAYLOAD_INVALID'
   | 'PAYLOAD_TOO_LARGE'
   | 'RATE_LIMIT'
-  | 'OFFLINE_QUEUE_FULL';
+  | 'OFFLINE_QUEUE_FULL'
+  | 'CLIENT_MESSAGE_ID_DUPLICATE';
 
 export interface MessageAppendError {
   readonly code: MessageAppendErrorCode;

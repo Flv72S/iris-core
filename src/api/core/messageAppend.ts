@@ -221,7 +221,7 @@ export function createInternalMessage(
  * Verifica idempotenza tramite clientMessageId.
  * 
  * Vincoli (Invariante SYS-01):
- * - Se clientMessageId duplicato, restituisce messaggio esistente
+ * - Se clientMessageId duplicato, restituisce errore esplicito
  * - Nessun overwrite
  */
 export async function checkIdempotency(
@@ -284,14 +284,11 @@ export async function appendMessage(
       repositories.messageRepo
     );
     if (existingMessage) {
-      // Restituisce messaggio esistente (idempotenza)
-      return {
-        messageId: existingMessage.messageId,
-        threadId: existingMessage.threadId,
-        state: existingMessage.state === 'DRAFT' ? 'SENT' : (existingMessage.state as 'SENT'),
-        createdAt: existingMessage.createdAt,
-        clientMessageId: existingMessage.clientMessageId,
-      };
+      return createExplicitError(
+        'CLIENT_MESSAGE_ID_DUPLICATE',
+        `Il clientMessageId ${request.clientMessageId} esiste gia.`,
+        existingMessage.threadId
+      );
     }
   }
 

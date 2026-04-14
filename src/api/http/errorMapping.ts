@@ -33,6 +33,7 @@ export function mapMessageAppendError(error: MessageAppendError): HttpStatusCode
     case 'ALIAS_NOT_FOUND':
       return 404;
     case 'THREAD_CLOSED':
+    case 'CLIENT_MESSAGE_ID_DUPLICATE':
       return 409;
     case 'PAYLOAD_INVALID':
     case 'PAYLOAD_TOO_LARGE':

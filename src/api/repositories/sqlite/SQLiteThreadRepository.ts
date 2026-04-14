@@ -49,7 +49,7 @@ export class SQLiteThreadRepository implements ThreadRepository {
   private prepareStatements(): void {
     // EXISTS (SQLite-compatible): ritorna 1 riga se esiste, 0 righe se non esiste
     this.existsStmt = this.db.prepare(`
-      SELECT 1 as exists FROM threads WHERE id = ? LIMIT 1
+      SELECT 1 as exists_flag FROM threads WHERE id = ? LIMIT 1
     `);
 
     // SELECT thread by id
@@ -83,8 +83,8 @@ export class SQLiteThreadRepository implements ThreadRepository {
   }
 
   async exists(threadId: string): Promise<boolean> {
-    const result = this.existsStmt.get(threadId) as { exists: number } | undefined;
-    return !!result && result.exists === 1;
+    const result = this.existsStmt.get(threadId) as { exists_flag: number } | undefined;
+    return !!result && result.exists_flag === 1;
   }
 
   async get(threadId: string): Promise<StoredThread | null> {

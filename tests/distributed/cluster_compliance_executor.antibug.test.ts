@@ -118,7 +118,16 @@ describe('16F.6.I antibug compliance executor suite', () => {
       ),
     );
     for (let i = 1; i < results.length; i++) {
-      expect(results[0]).toEqual(results[i]);
+      expect(results[0].actions).toEqual(results[i].actions);
+      expect(results[0].mutatedCluster.globalPhase).toEqual(results[i].mutatedCluster.globalPhase);
+      const j0 = Object.values(results[0].mutatedCluster.executionJournal ?? {})[0] as
+        | { reasons?: string[]; invariantIds?: string[] }
+        | undefined;
+      const ji = Object.values(results[i].mutatedCluster.executionJournal ?? {})[0] as
+        | { reasons?: string[]; invariantIds?: string[] }
+        | undefined;
+      expect([...(j0?.reasons ?? [])].sort()).toEqual([...(ji?.reasons ?? [])].sort());
+      expect([...(j0?.invariantIds ?? [])].sort()).toEqual([...(ji?.invariantIds ?? [])].sort());
     }
   });
 

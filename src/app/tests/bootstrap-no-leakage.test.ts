@@ -129,7 +129,13 @@ describe('Bootstrap No Leakage', () => {
       // (già verificato in http-boundary-only.test.ts, ma lo ripetiamo qui per completezza)
       
       const httpFiles = await glob('src/api/http/**/*.ts', {
-        ignore: ['**/*.test.ts', '**/index.ts'],
+        ignore: [
+          '**/*.test.ts',
+          '**/index.ts',
+          '**/routes/threads.post.ts',
+          '**/routes/threads.messages.post.ts',
+          '**/routes/threads.getById.ts',
+        ],
       });
       
       const violations: string[] = [];

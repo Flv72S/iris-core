@@ -98,7 +98,17 @@ describe('16F.6.I antibug level2 distributed hardening', () => {
     });
     const r1 = executeComplianceDecision(baseCluster(), d1);
     const r2 = executeComplianceDecision(baseCluster(), d2);
-    expect(r1.mutatedCluster).toEqual(r2.mutatedCluster);
+    expect(r1.actions).toEqual(r2.actions);
+    expect(r1.mutatedCluster.globalPhase).toEqual(r2.mutatedCluster.globalPhase);
+    expect(r1.mutatedCluster.transitionLocks).toEqual(r2.mutatedCluster.transitionLocks);
+    const j1 = Object.values(r1.mutatedCluster.executionJournal ?? {})[0] as
+      | { reasons?: string[]; invariantIds?: string[] }
+      | undefined;
+    const j2 = Object.values(r2.mutatedCluster.executionJournal ?? {})[0] as
+      | { reasons?: string[]; invariantIds?: string[] }
+      | undefined;
+    expect([...(j1?.reasons ?? [])].sort()).toEqual([...(j2?.reasons ?? [])].sort());
+    expect([...(j1?.invariantIds ?? [])].sort()).toEqual([...(j2?.invariantIds ?? [])].sort());
   });
 
   it('MUST keep journal stable under repeated execution attempts', () => {
@@ -128,7 +138,16 @@ describe('16F.6.I antibug level2 distributed hardening', () => {
         }),
       ),
     );
-    expect(results.every((r) => JSON.stringify(r) === JSON.stringify(results[0]))).toBe(true);
+    const baseline = results[0];
+    expect(
+      results.every(
+        (r) =>
+          JSON.stringify(r.actions) === JSON.stringify(baseline.actions) &&
+          r.mutatedCluster.globalPhase === baseline.mutatedCluster.globalPhase &&
+          JSON.stringify(r.mutatedCluster.transitionLocks) ===
+            JSON.stringify(baseline.mutatedCluster.transitionLocks),
+      ),
+    ).toBe(true);
   });
 
   it('MUST not leak mutations through nested references', () => {

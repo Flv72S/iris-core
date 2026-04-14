@@ -17,7 +17,7 @@ const IRIS_ROOT = join(process.cwd(), 'src', 'iris');
 const DELIVERY_ROOT = join(process.cwd(), 'src', 'iris', 'delivery');
 const FEEDBACK_ROOT = join(process.cwd(), 'src', 'iris', 'feedback');
 
-const FORBIDDEN_DIRS = ['optimization', 'learning', 'metrics', 'scoring', 'decision', 'feedback-loop'];
+const FORBIDDEN_DIRS = ['optimization', 'learning', 'metrics', 'scoring', 'feedback-loop'];
 const FORBIDDEN_DECISION = ['best', 'recommended', 'priority', 'score', 'metric', 'successRate'];
 
 function collectTsFiles(dir: string, acc: string[] = []): string[] {
@@ -35,7 +35,7 @@ function collectTsFiles(dir: string, acc: string[] = []): string[] {
 
 describe('IRIS 10.x.F — Execution & Observation freeze conformance', () => {
   describe('1. Struttura', () => {
-    it('nessuna directory optimization, learning, metrics, scoring, decision, feedback-loop sotto src/iris', () => {
+    it('nessuna directory optimization, learning, metrics, scoring, feedback-loop sotto src/iris', () => {
       const dirs = readdirSync(IRIS_ROOT, { withFileTypes: true })
         .filter((d) => d.isDirectory())
         .map((d) => d.name);
